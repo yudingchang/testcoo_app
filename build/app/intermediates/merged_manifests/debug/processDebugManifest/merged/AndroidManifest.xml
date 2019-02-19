@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.testcooapp"
+    package="com.example.testcooinspector"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
@@ -25,9 +25,9 @@
         android:name="io.flutter.app.FlutterApplication"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="testcoo_app" >
+        android:label="testcoo_inspector" >
         <activity
-            android:name="com.example.testcooapp.MainActivity"
+            android:name="com.example.testcooinspector.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"

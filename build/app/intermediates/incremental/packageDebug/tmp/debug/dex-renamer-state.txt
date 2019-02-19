@@ -1,4 +1,4 @@
-#Mon Jan 21 15:39:13 CST 2019
-base.0=D\:\\work\\testcoo_app\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
+#Tue Feb 19 11:48:39 CST 2019
+base.0=E\:\\AndroidStudioProjects\\testcoo_inspector\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex
