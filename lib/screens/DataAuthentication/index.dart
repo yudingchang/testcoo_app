@@ -15,15 +15,21 @@ class DataAuthentication extends StatefulWidget {
 }
 
 class DataAuthenticationState extends State<DataAuthentication> {
+  BuildContext context;
   @override
   Widget build(BuildContext context) {
     this.context = context;
+    double _width = MediaQuery.of(context).size.width;
     return Container(
         child: new Column(
-        children: [
-          
-        ]
-        ）
-    ）
+          children: [
+            new Container(
+              width: _width,
+              padding:  new EdgeInsets.symmetric(horizontal: 12.0, vertical: 50.0),
+              color: ,
+            ),
+          ]
+        )
+    );
   }
 }
