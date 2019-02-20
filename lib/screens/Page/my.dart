@@ -13,10 +13,17 @@ class MyScreen extends StatefulWidget {
 
 class MyScreenState extends State<MyScreen>{
   List<Image> images = [];
+  BuildContext context;
 
+  _onPressed() {
+//    Navigator.pushNamed(context, "DataAuthentication");
+    Navigator.of(context).pushNamed("/DataAuthentication");
+  }
 
   @override
   Widget build(BuildContext context) {
+
+    this.context = context;
     double _width = MediaQuery.of(context).size.width;
 
     // TODO: implement build
@@ -85,6 +92,7 @@ class MyScreenState extends State<MyScreen>{
                       decoration: new BoxDecoration(
                           border: new Border(bottom: new BorderSide(color: const Color(0XFFE6E6E6)))
                       ),
+
                       child: ListTile(
                         title: new Row(
                           mainAxisSize: MainAxisSize.min,
@@ -96,6 +104,7 @@ class MyScreenState extends State<MyScreen>{
                             ),
                           ],
                         ),
+                        onTap: _onPressed,
                         trailing: new Container(
                           width: 120.0,
                           child: Row(
@@ -103,8 +112,10 @@ class MyScreenState extends State<MyScreen>{
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                               new Padding(padding: new EdgeInsets.only(right: 3.0), child: Text('未提交', style: normalSubStyle,),),
-                              Icon(Icons.arrow_forward_ios, size: 16.0,),
+                              Icon(Icons.arrow_forward_ios, size: 16.0,)
                             ],
+
+
                           ),
                         )
                       ),
@@ -134,10 +145,17 @@ class MyScreenState extends State<MyScreen>{
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                          new Padding(padding: new EdgeInsets.only(right: 3.0), child: Text('查看', style: normalSubStyle,),),
+                          new Padding(padding: new EdgeInsets.only(right: 3.0), child: Text('查看', style: normalSubStyle,)
+
+                          ),
                               Icon(Icons.arrow_forward_ios, size: 16.0,),
+
                             ],
                           ),
+
+//                          onPressed: () {
+//                            Navigator.of(context).pushNamed("DataAuthentication");
+//                          },
                         )
                       ),
                     ),

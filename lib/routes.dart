@@ -4,12 +4,14 @@ import 'package:testcoo_inspector/screens/SignUp/index.dart';
 import 'package:testcoo_inspector/screens/Page/index.dart';
 import 'package:testcoo_inspector/theme/style.dart';
 import 'package:testcoo_inspector/app_state_container.dart';
+import 'package:testcoo_inspector/screens/DataAuthentication/index.dart';
 
 class Routes extends StatelessWidget {
 
   var routes = <String, WidgetBuilder>{
     "/SignUp": (BuildContext context) => new SignUpScreen(),
-    "/HomePage": (BuildContext context) => new AppScreen()
+    "/HomePage": (BuildContext context) => new AppScreen(),
+    "/DataAuthentication": (BuildContext context) => new DataAuthentication(),
   };
 
   @override
