@@ -28,11 +28,10 @@ class DatabaseHelper {
     return theDb;
   }
 
-
   void _onCreate(Database db, int version) async {
     // When creating the db, create the table
     await db.execute(
-        "CREATE TABLE User(id INTEGER PRIMARY KEY, username TEXT, password TEXT)");
+        "CREATE TABLE User(id INTEGER PRIMARY KEY, username TEXT, password TEXT, token TEXT)");
     print("Created tables");
   }
 
@@ -54,4 +53,9 @@ class DatabaseHelper {
     return res.length > 0? true: false;
   }
 
+  Future<dynamic> getUser() async {
+    var dbClient = await db;
+    var res = await dbClient.query("User");
+    return res.first;
+  }
 }

@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:testcoo_inspector/theme/style.dart';
 import 'package:testcoo_inspector/screens/Page/home.dart';
 import 'package:testcoo_inspector/screens/Page/my.dart';
+import 'package:testcoo_inspector/screens/Page/chase.dart';
 
 class AppScreen extends StatefulWidget {
   const AppScreen({ Key key }) : super(key: key);
@@ -17,9 +18,7 @@ class AppScreenState extends State<AppScreen>{
     new Container(
       color: Colors.red
     ),
-    new Container(
-      color: Colors.green
-    ),
+    new ChaseScreen(),
     new MyScreen(),
   ];
 

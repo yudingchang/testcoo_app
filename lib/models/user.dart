@@ -13,6 +13,7 @@ class User {
 
   String get username => _username;
   String get password => _password;
+  String get token => _api_token;
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();

@@ -11,7 +11,7 @@ import 'package:testcoo_inspector/services/validations.dart';
 import 'dart:async';
 
 import 'package:testcoo_inspector/auth.dart';
-import 'package:testcoo_inspector/data/database_helper.dart';
+import 'package:testcoo_inspector/data/storage.dart';
 import 'package:testcoo_inspector/models/user.dart';
 import 'package:testcoo_inspector/screens/Login/login_screen_presenter.dart';
 
@@ -164,8 +164,11 @@ class LoginScreenState extends State<LoginScreen> implements LoginScreenContract
   void onLoginSuccess(User user) async {
     _showSnackBar(user.toString());
     setState(() => _isLoading = false);
-    var db = new DatabaseHelper();
-    await db.saveUser(user);
+    var storage = new Storage();
+    storage.setToken(user.token);
+
+    // 保存密码
+
     var authStateProvider = new AuthStateProvider();
     authStateProvider.notify(AuthState.LOGGED_IN);
   }

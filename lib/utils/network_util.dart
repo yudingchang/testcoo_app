@@ -2,17 +2,34 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:testcoo_inspector/data/storage.dart';
 
 class NetworkUtil {
   // next three lines makes this class a Singleton
   static NetworkUtil _instance = new NetworkUtil.internal();
+  static String token;
+  static Storage storage = new Storage();
+
   NetworkUtil.internal();
   factory NetworkUtil() => _instance;
 
   final JsonDecoder _decoder = new JsonDecoder();
 
-  Future<dynamic> get(String url) {
-    return http.get(url).then((http.Response response) {
+  Future<dynamic> get headers async {
+    var token = await storage.getToken();
+    return {
+      HttpHeaders.acceptHeader: 'application/json',
+      HttpHeaders.authorizationHeader: 'Bearer ' + token,
+    };
+  }
+
+  Future<dynamic> get(String url, {Map<String, dynamic> queryParameters}) async {
+    if (queryParameters.isNotEmpty) {
+      var uri = Uri.parse(url);
+      url = uri.replace(queryParameters: queryParameters).toString();
+    }
+
+    return http.get(url, headers: await headers).then((http.Response response) {
       final String res = response.body;
       final int statusCode = response.statusCode;
 
@@ -20,6 +37,8 @@ class NetworkUtil {
         throw new Exception("Error while fetching data");
       }
       return _decoder.convert(res);
+    }).catchError((error) {
+      print(error.toString());
     });
   }
 
@@ -32,9 +51,6 @@ class NetworkUtil {
       final int statusCode = response.statusCode;
 
       dynamic data = _decoder.convert(res);
-
-      print(statusCode);
-      print(data);
 
 //      if (statusCode < 200 || statusCode > 400 || json == null) {
 //        throw new Exception("Error while fetching data");
